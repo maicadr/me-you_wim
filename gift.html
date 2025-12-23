@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Surprise 🎁</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #1a1a2e, #162447);
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        color: white;
+    }
+
+    /* Snowflakes */
+    .snowflake {
+        position: absolute;
+        top: -10px;
+        color: white;
+        font-size: 1.2em;
+        user-select: none;
+        animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-10px) translateX(0); opacity: 1;}
+        100% { transform: translateY(100vh) translateX(50px); opacity: 0;}
+    }
+
+    .gift-wrapper {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        cursor: pointer;
+        perspective: 1000px;
+        z-index: 2;
+    }
+
+    .gift-box {
+        width: 100%;
+        height: 100%;
+        background: red;
+        border: 5px solid #fff;
+        border-radius: 10px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+    }
+
+    .gift-wrapper.open .gift-box {
+        transform: rotateX(180deg);
+    }
+
+    .lid {
+        width: 100%;
+        height: 50%;
+        background: #ff4d4d;
+        border-bottom: 2px solid #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px 10px 0 0;
+        transform-origin: top;
+        transition: transform 1s;
+        z-index: 2;
+    }
+
+    .gift-wrapper.open .lid {
+        transform: rotateX(-180deg);
+    }
+
+    .ribbon {
+        position: absolute;
+        background: #fff;
+    }
+
+    .ribbon.horizontal {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        transform: translateY(-50%);
+    }
+
+    .ribbon.vertical {
+        left: 50%;
+        top: 0;
+        width: 10px;
+        height: 100%;
+        transform: translateX(-50%);
+    }
+
+    .message {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        color: #ff0000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        backface-visibility: hidden;
+        transform: rotateX(180deg);
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    /* Sparkle animation */
+    .sparkle {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: yellow;
+        border-radius: 50%;
+        animation: twinkle 1.5s infinite;
+    }
+
+    @keyframes twinkle {
+        0%, 100% { opacity: 0; transform: scale(0.5);}
+        50% { opacity: 1; transform: scale(1);}
+    }
+</style>
+</head>
+<body>
+
+<!-- Snowflakes -->
+<div class="snowflake" style="left:5%;">❄️</div>
+<div class="snowflake" style="left:15%; animation-duration: 12s;">❄️</div>
+<div class="snowflake" style="left:25%; animation-duration: 8s;">❄️</div>
+<div class="snowflake" style="left:35%; animation-duration: 10s;">❄️</div>
+<div class="snowflake" style="left:50%; animation-duration: 14s;">❄️</div>
+<div class="snowflake" style="left:65%; animation-duration: 9s;">❄️</div>
+<div class="snowflake" style="left:75%; animation-duration: 11s;">❄️</div>
+<div class="snowflake" style="left:85%; animation-duration: 13s;">❄️</div>
+
+<div class="gift-wrapper" onclick="this.classList.toggle('open')">
+    <div class="gift-box">
+        <div class="lid"></div>
+        <div class="ribbon horizontal"></div>
+        <div class="ribbon vertical"></div>
+        <div class="message">
+            🎄 Merry Christmas! 🎄<br>
+            From Socajel-Daro Family 🤍🤲
+        </div>
+    </div>
+</div>
+
+<!-- Sparkles -->
+<script>
+    for(let i=0; i<30; i++){
+        let sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random()*100 + 'vw';
+        sparkle.style.top = Math.random()*100 + 'vh';
+        sparkle.style.animationDelay = Math.random()*2 + 's';
+        sparkle.style.width = sparkle.style.height = (Math.random()*5+3) + 'px';
+        document.body.appendChild(sparkle);
+    }
+</script>
+
+</body>
+</html>
